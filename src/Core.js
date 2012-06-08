@@ -12,8 +12,15 @@
 */
 
 process.on('uncaughtException', function(err) {
-    console.log(err);
-    console.log(err.stack);
+
+    if( err  instanceof ReferenceError){
+        console.log(err);
+    }
+    else
+    {
+        console.log("" + err);
+        console.log(err.stack);
+    }
 });
 
 var wavesFolder   = "waves";
@@ -25,7 +32,7 @@ if(process.argv.length != 5){
     console.log("Using default values:"+ "waves localhost 6379");
 }
 else{
-    wavesFolder   = process.argv[1];
+    wavesFolder     = process.argv[1];
     redisHost       = process.argv[2];
     redisPort       = process.argv[3];
 }
@@ -33,7 +40,13 @@ else{
 
 var adaptor = require('./Adaptor.js').init("core",redisHost,redisPort);
 
-adaptor.loadWaves(wavesFolder);
+adaptor.uploadWaves(wavesFolder);
 console.log("Starting....");
 adaptor.loadMyCode();
-adaptor.startWave("TestPlay.js");
+
+setTimeout(
+    function(){
+        adaptor.startWave("LaunchingTest.js");
+        adaptor.startWave("BenchMark.js",10000);
+    },
+100);
