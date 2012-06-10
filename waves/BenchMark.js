@@ -5,36 +5,47 @@
  * Time: 9:49 PM
  * To change this template use File | Settings | File Templates.
  */
-var benchmark =
+var benchmark =     //swarming description
 {
         vars:{
             count:0,
             maxCount:0,
             startTime:0,
-            debug:"false"
+            debug:"true1"
         },
         start:function(maxCount){
                     this.startTime = Date.now();
                     this.maxCount = maxCount;
-                    this.phase("tick");
                     console.log("Starting benchmark for " + maxCount + " phases!");
+                    this.swarm("tick");
                 },
-        tick:{
+        tick:{          //phase
             actor:"core",
             code : function (){
                     this.count      = parseInt(this.count);
                     this.maxCount   = parseInt(this.maxCount);
                     this.count++;
                     if(this.count < this.maxCount){
-                        this.phase("tick");
+                        //console.log("Core tick "+this.count);
+                        this.swarm("ClientAdaptorTick");
                     }
                     else{
-                        this.phase("printResults");
+                        this.swarm("printResults");
                     }
                 }
         },
-        printResults:{
-            actor:"core",
+        ClientAdaptorTick:{  //phase
+            actor:"ClientAdaptor",
+            code : function (){
+                this.count      = parseInt(this.count);
+                this.maxCount   = parseInt(this.maxCount);
+                this.count++;
+                //console.log("CA tick "+this.count);
+                this.swarm("tick");
+            }
+        },
+        printResults:{ //final phase
+            actor:"ClientAdaptor",
             code : function (){
                 var ct = Date.now();
                 var max = parseInt(this.maxCount);

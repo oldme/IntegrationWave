@@ -15,6 +15,7 @@ process.on('uncaughtException', function(err) {
 
     if( err  instanceof ReferenceError){
         console.log(err);
+        console.log(err.stack);
     }
     else
     {
@@ -23,7 +24,7 @@ process.on('uncaughtException', function(err) {
     }
 });
 
-var wavesFolder   = "waves";
+var descriptionsFolder   = "waves";
 var redisHost       = "localhost";
 var redisPort       = 6379;
 
@@ -32,21 +33,36 @@ if(process.argv.length != 5){
     console.log("Using default values:"+ "waves localhost 6379");
 }
 else{
-    wavesFolder     = process.argv[1];
+    descriptionsFolder     = process.argv[1];
     redisHost       = process.argv[2];
     redisPort       = process.argv[3];
 }
 
-
 var adaptor = require('./Adaptor.js').init("core",redisHost,redisPort);
+adaptor.uploadDescriptions(descriptionsFolder);
+adaptor.loadSwarmingCode();
 
-adaptor.uploadWaves(wavesFolder);
-console.log("Starting....");
-adaptor.loadMyCode();
+var cfg = adaptor.readConfig(descriptionsFolder+"/../etc/");
+//console.log(cfg);
+var childForker = require('child_process');
+
+var forkOptions={
+    cwd:process.cwd(),
+    env:process.env
+};
+
+
+for(var i=0;i<cfg.processes.length;i++){
+    var n = childForker.fork(cfg.processes[i],null,forkOptions);
+    n.on('message', function(m) {
+        console.log('PARENT got message:', m);
+    });
+    n.send({ "redisHost": redisHost,"redisPort":redisPort });
+}
 
 setTimeout(
     function(){
         adaptor.startWave("LaunchingTest.js");
         adaptor.startWave("BenchMark.js",10000);
     },
-100);
+1000);

@@ -12,17 +12,16 @@ var launchingTest =
         },
         start:function(){
                     this.message+="!";
-                    this.phase("begin");
+                    this.swarm("begin");
                 },
-        begin:{
+        begin:{ //phase
             actor:"core",
             code : function (){
-                    aaa
                     this.message="Hello World!"+" The swarming has began! ";
-                    this.phase("endTest");
+                    this.swarm("endTest");
                 }
         },
-        endTest:{
+        endTest:{   //phase
             actor:"core",
             code : function (){
                     console.log(this.message);
