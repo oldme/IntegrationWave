@@ -1,0 +1,10 @@
+{
+"processes":[
+        "src/ClientAdaptor.js"
+       ],
+ "redisHost":"localhost",
+ "redisPort":6379,
+ "verboseLoading":"false"
+}
+
+
