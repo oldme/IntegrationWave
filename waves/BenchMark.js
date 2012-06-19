@@ -20,7 +20,7 @@ var benchmark =     //swarming description
                     this.swarm("tick");
                 },
         tick:{          //phase
-            actor:"core",
+            node:"core",
             code : function (){
                     this.count      = parseInt(this.count);
                     this.maxCount   = parseInt(this.maxCount);
@@ -35,7 +35,7 @@ var benchmark =     //swarming description
                 }
         },
         ClientAdaptorTick:{  //phase
-            actor:"ClientAdaptor",
+            node:"ClientAdaptor",
             code : function (){
                 this.count      = parseInt(this.count);
                 this.maxCount   = parseInt(this.maxCount);
@@ -45,7 +45,7 @@ var benchmark =     //swarming description
             }
         },
         printResults:{ //final phase
-            actor:"ClientAdaptor",
+            node:"ClientAdaptor",
             code : function (){
                 var ct = Date.now();
                 var max = parseInt(this.maxCount);

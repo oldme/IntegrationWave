@@ -15,14 +15,14 @@ var launchingTest =
                     this.swarm("begin");
                 },
         begin:{ //phase
-            actor:"core",
+            node:"core",
             code : function (){
                     this.message="Hello World!"+" The swarming has began! ";
                     this.swarm("endTest");
                 }
         },
         endTest:{   //phase
-            actor:"core",
+            node:"core",
             code : function (){
                     console.log(this.message);
                 }

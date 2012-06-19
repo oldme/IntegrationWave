@@ -9,44 +9,30 @@
 var redis = require("redis");
 var fs = require('fs');
 
-function AdaptorBase(actorName){
-    this.actorName = actorName;
+function AdaptorBase(nodeName){
+    this.nodeName = nodeName;
 }
 
-var BROADCAST_ACTOR_NAME = "BROADCAST";
+var BROADCAST_NODE_NAME = "BROADCAST";
 
-exports.init = function(actorName,redisHost,redisPort)
+exports.init = function(nodeName,redisHost,redisPort)
 {
-    console.log("Starting adaptor " + actorName);
-    thisAdaptor = new AdaptorBase(actorName);
+    console.log("Starting adaptor " + nodeName);
+    thisAdaptor = new AdaptorBase(nodeName);
     redisClient = redis.createClient(redisPort,redisHost);
     pubsubRedisClient = redis.createClient(redisPort,redisHost);
-    //broadcastRedisClient = redis.createClient(redisPort,redisHost);
-
     thisAdaptor.instanceUID = "UID:"+Date.now()+Math.random()+Math.random()+Math.random();
 
     thisAdaptor.compiledSwarmingDescriptions = [];
     thisAdaptor.msgCounter = 0;
-
-
-    pubsubRedisClient.subscribe(actorName);
-    //broadcastRedisClient.subscribe(BROADCAST_ACTOR_NAME);
+    pubsubRedisClient.subscribe(nodeName);
 
     var cleanMessage = {
         scope:"broadcast",
         type:"start",
-        actorName:actorName,
+        nodeName:nodeName,
         instanceUID:thisAdaptor.instanceUID
     }
-
-
-    /*broadcastRedisClient.on("message", function (channel, message) {
-        var initVars = JSON.parse(message);
-        thisAdaptor.onBroadcast(initVars);
-    });*/
-
-    //pubsubRedisClient.publish(actorName,JSON.stringify(cleanMessage));
-
 
     // handle messages from redis
     pubsubRedisClient.on("message", function (channel, message) {
@@ -56,22 +42,36 @@ exports.init = function(actorName,redisHost,redisPort)
             thisAdaptor.onBroadcast(initVars);
         }
         else{
-            var swarmingPhase = new SwarmingPhase(initVars.swarmingName,initVars.currentPhase);
-            thisAdaptor.msgCounter++;
-            for (var i in initVars){
-                swarmingPhase[i] = initVars[i];
-            }
-            swarmingPhase.msgCounter = thisAdaptor.msgCounter;
-            if(swarmingPhase.debug == "true"){
-                console.log("[" +thisAdaptor.actorName + "] received for [" + channel + "]: " + message);
-            }
-            var phaseFunction = thisAdaptor.compiledSwarmingDescriptions[swarmingPhase.swarmingName][swarmingPhase.currentPhase].code;
-            phaseFunction.apply(swarmingPhase);
+            thisAdaptor.onMessageFromQueue(initVars,message);
         }
-
     });
 
     return thisAdaptor;
+}
+
+AdaptorBase.prototype.onMessageFromQueue = function(initVars,rawMessage){
+    var swarmingPhase = new SwarmingPhase(initVars.swarmingName,initVars.currentPhase);
+    thisAdaptor.msgCounter++;
+    for (var i in initVars){
+        swarmingPhase[i] = initVars[i];
+    }
+
+    if(swarmingPhase.debug == "true"){
+        console.log("[" +thisAdaptor.nodeName + "] received for [" + channel + "]: " + rawMessage);
+    }
+    var phaseFunction = thisAdaptor.compiledSwarmingDescriptions[swarmingPhase.swarmingName][swarmingPhase.currentPhase].code;
+    if(phaseFunction != null){
+        phaseFunction.apply(swarmingPhase);
+    }
+
+    else{
+        if(thisAdaptor.onMessageCallback != null){
+            thisAdaptor.onMessageCallback(message);
+        }
+        else{
+                Console.log("DROPPING unknown message: " + rawMessage);
+        }
+    }
 }
 
 AdaptorBase.prototype.uploadDescriptions = function(descriptionsFolder){
@@ -110,7 +110,7 @@ AdaptorBase.prototype.loadSwarmingCode =  function(){
     redisClient.hgetall(thisAdaptor.mkUri("system","code"),
         function (err, hash){
             for (var i in hash){
-                printDebugMessages("Loading wave:" + i);
+                printDebugMessages("Loading swarming phase:" + i);
                 try
                 {
                     var obj = eval(hash[i]);
@@ -141,9 +141,9 @@ SwarmingPhase.prototype.swarm = function(phaseName){
     //console.log(this.waveName);
     //console.log(phaseName);
     this.currentPhase = phaseName;
-    var targetActorName = thisAdaptor.compiledSwarmingDescriptions[this.swarmingName][phaseName].actor;
+    var targetActorName = thisAdaptor.compiledSwarmingDescriptions[this.swarmingName][phaseName].node;
     if(this.debug == "true"){
-            console.log("[" +thisAdaptor.actorName + "] is sending message for adaptor [" + targetActorName + "]: " + JSON.stringify(this));
+            console.log("[" +thisAdaptor.nodeName + "] is sending message for adaptor [" + targetActorName + "]: " + JSON.stringify(this));
     }
     redisClient.publish(targetActorName,JSON.stringify(this));
 };
@@ -160,13 +160,17 @@ AdaptorBase.prototype.startWave = function (waveName){
     argsArray.shift();
     start.apply(wave,argsArray);
 }
+SwarmingPhase.prototype.startWave = AdaptorBase.prototype.startWave;
 
 
 AdaptorBase.prototype.onBroadcast = function(message){
     if(message.type == "start" && message.instanceUID != thisAdaptor.instanceUID){
+        console.log("["+thisAdaptor.nodeName+"] Forcing process exit because an node with the same name got alive!");
     process.exit(999);
     }
     if(thisAdaptor.onBroadcastCallback != null){
         thisAdaptor.onBroadcastCallback(message);
     }
 }
+
+
