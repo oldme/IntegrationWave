@@ -13,6 +13,30 @@ process.on('uncaughtException', function(err) {
 var redisHost       = "localhost";
 var redisPort       = 6379;
 var thisAdaptor;
+var serverPort      = 3000;
+
+function ClientTcpServer(port)
+{
+    console.log("Starting client server on 3000");
+    var net   	= require('net');
+    this.server = net.createServer(
+        function (socket)
+        {
+            var parser = JSONStream.parse();
+
+            parser.on('object', function(obj) {
+
+            });
+
+            socket.on('data', function (data){
+                parser.parse(data.toString('utf8'));
+            });
+        }
+    );
+    this.server.listen(port);
+};
+
+
 
 process.on('message', function(m) {
     //console.log('CHILD got message:', m);
@@ -20,6 +44,6 @@ process.on('message', function(m) {
     redisPort       = m.redisPort;
     thisAdaptor = require('./Adaptor.js').init("ClientAdaptor",redisHost,redisPort);
     thisAdaptor.loadSwarmingCode();
-    //thisAdaptor.prototype.
+    new ClientTcpServer(serverPort);
 });
 
