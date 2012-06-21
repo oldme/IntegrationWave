@@ -6,6 +6,8 @@
 
 var redis = require("redis");
 var fs = require('fs');
+var blueUtil = require("../src/BlueUtil").init();
+
 
 function AdaptorBase(nodeName){
     this.nodeName = nodeName;
@@ -176,16 +178,6 @@ AdaptorBase.prototype.onBroadcast = function(message){
     }
 }
 
-function decimalToHex(d, padding) {
-    var hex = Number(d).toString(16);
-    padding = typeof (padding) === "undefined" || padding === null ? padding = 2 : padding;
-
-    while (hex.length < padding) {
-        hex = "0" + hex;
-    }
-
-    return "0x"+hex;
-}
 
 function writeFastJSON(sock,str){ //write size and JSON serialised form of the object
     var sizeLine=decimalToHex(str.length)+"\n";
@@ -198,18 +190,20 @@ function newOutlet(socketParam){
         redisClient:null,
         socket:socketParam,
         clientSessionId:null,
+        loginSwarmingVariables:null,
         onChannelNewMessage:function (channel, message) {
             writeFastJSON(socket,message);
         },
-        onLogin:function (clientSessionId) {
+        successfulLogin:function (swarmingVariables) {
             this.redisClient = redis.createClient(thisAdaptor.redisPort,thisAdaptor.redisHost);
-            this.redisClient.subscribe(clientSessionId);
-            this.redisClient.on("message",outlet.onChannelNewMessage);
-        }
+            this.redisClient.subscribe(this.clientSessionId);
+            this.redisClient.on("message",outlet.onChannelNewMessage.bind());
+            this.loginSwarmingVariables = swarmingVariables;
+        },
         succesLogin:function(){
             this.execute = this.executeSafe;
         },
-        execute : null;
+        execute : null,
         executeButNotAuthenticated : function (messageObj){
             if(messageObj.swarmingName != "ClientLogin.js"){
                 Console.log("Could not execute [" +messageObj.swarmingName +"] swarming without being logged in");
@@ -245,10 +239,15 @@ function newOutlet(socketParam){
                 else{
                     Console.log("["+thisAdaptor.nodeName +"] I don't know what to execute "+ JSON.stringify(messageObj));
                 }
-
             }
     };
     outlet.execute = outlet.executeButNotAuthenticated;
+    var parser = require("FastJSONParser").createFastParser(outlet.execute.bind(outlet));
+
+    socketParam.on('data', function (data){
+        parser.parseNewData(data.toString('utf8'));
+    });
+
     return outlet;
 }
 

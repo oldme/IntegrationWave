@@ -23,20 +23,18 @@ thisAdaptor.addAPIFunction("", function()
 );
 
 
+function registerSuccessLogin(){
+
+}
+
+
 function ClientTcpServer(port,adaptor)
 {
     console.log("Starting client server on 3000");
     var net   	= require('net');
     this.server = net.createServer(
         function (socket){
-            var parser = require("FastJSONParser").createFastParser(
-                function (newObjectFromSocket){
-                    thisAdaptor.execute(newObjectFromSocket);
-                }
-            );
-            socket.on('data', function (data){
-                parser.parseNewData(data.toString('utf8'));
-            });
+            var outlet = thisAdaptor.newOutlet(socket);
         }
     );
     this.server.listen(port);
@@ -50,4 +48,5 @@ process.on('message', function(m) {
     thisAdaptor.loadSwarmingCode();
     new ClientTcpServer(serverPort);
 });
+
 
