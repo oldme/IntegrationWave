@@ -38,7 +38,7 @@ else{
     redisPort       = process.argv[3];
 }
 
-var adaptor = require('./Adaptor.js').init("core",redisHost,redisPort);
+var adaptor = require('./Adaptor.js').init("Core",redisHost,redisPort);
 adaptor.uploadDescriptions(descriptionsFolder);
 adaptor.loadSwarmingCode();
 

@@ -1,16 +1,10 @@
-/**
- * Created with JetBrains WebStorm.
- * User: sinica
- * Date: 6/21/12
- * Time: 2:03 PM
- * To change this template use File | Settings | File Templates.
- */
 
 var loginSwarming =
 {
     vars:{
         isOk:false,
-        clientSession:null
+        clientSession:null,
+        debug:"false"
     },
     start:function(clientSessionId,userId,authorisationToken){
         this.isOk=false;
@@ -35,15 +29,14 @@ var loginSwarming =
         node:"ClientAdaptor",
         code : function (){
             console.log("Success login for " + this.userId);
-            thisAdaptor.findOutlet(this.clientSessionId).successfullLogin(this);
+            thisAdaptor.findOutlet(this.clientSessionId).successfulLogin(this);
         }
-    }
+    },
 
     failed:{   //phase
         node:"ClientAdaptor",
         code : function (){
-
-            console.log(this.message);
+            thisAdaptor.findOutlet(this.clientSessionId).failLogin(this);
         }
     }
 };

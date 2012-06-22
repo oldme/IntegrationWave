@@ -18,7 +18,7 @@ var benchmark =     //swarming description
                     this.swarm("tick");
                 },
         tick:{          //phase
-            node:"core",
+            node:"Core",
             code : function (){
                     this.count      = parseInt(this.count);
                     this.maxCount   = parseInt(this.maxCount);

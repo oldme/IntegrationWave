@@ -30,6 +30,8 @@ exports.init = function(nodeName,redisHost,redisPort)
     thisAdaptor.redisHost = redisHost;
     thisAdaptor.redisPort = redisPort;
 
+    thisAdaptor.connectedClients = {};
+
 
     var cleanMessage = {
         scope:"broadcast",
@@ -178,12 +180,11 @@ AdaptorBase.prototype.onBroadcast = function(message){
     }
 }
 
-
-function writeFastJSON(sock,str){ //write size and JSON serialised form of the object
-    var sizeLine=decimalToHex(str.length)+"\n";
-    sock.write(sizeLine);
-    sock.write(str+"\n");
+AdaptorBase.prototype.findOutlet(sessionId){
+    return thisAdaptor.connectedOutlets[sessionId];
 }
+
+
 
 function newOutlet(socketParam){
     var outlet={
@@ -199,13 +200,31 @@ function newOutlet(socketParam){
             this.redisClient.subscribe(this.clientSessionId);
             this.redisClient.on("message",outlet.onChannelNewMessage.bind());
             this.loginSwarmingVariables = swarmingVariables;
-        },
-        succesLogin:function(){
             this.execute = this.executeSafe;
         },
         execute : null,
+        executeButNotIdentified : function (messageObj){
+            if(messageObj.clientSessionId != null){
+                this.clientSessionId = messageObj.clientSessionId;
+                thisAdaptor.connectedOutlets[]
+            }
+            else{
+
+            }
+
+
+            if(messageObj.swarmingName != thisAdaptor.loginSwarmingName ){
+                Console.log("Could not execute [" +messageObj.swarmingName +"] swarming without being logged in");
+            }
+            else{
+                executeSafe(messageObj);
+            }
+        },
         executeButNotAuthenticated : function (messageObj){
-            if(messageObj.swarmingName != "ClientLogin.js"){
+            if(messageObj.clientSessionId != null)
+            thisAdaptor.connectedOutlets
+
+            if(messageObj.swarmingName != thisAdaptor.loginSwarmingName ){
                 Console.log("Could not execute [" +messageObj.swarmingName +"] swarming without being logged in");
             }
             else{

@@ -46,6 +46,7 @@ process.on('message', function(m) {
     redisPort       = m.redisPort;
     thisAdaptor = require('./Adaptor.js').init("ClientAdaptor",redisHost,redisPort);
     thisAdaptor.loadSwarmingCode();
+    thisAdaptor.loginSwarmingName = "login.js";
     new ClientTcpServer(serverPort);
 });
 
