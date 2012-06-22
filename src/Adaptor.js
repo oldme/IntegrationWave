@@ -6,7 +6,7 @@
 
 var redis = require("redis");
 var fs = require('fs');
-var blueUtil = require("../src/BlueUtil").init();
+var util = require("swarmutil");
 
 
 function AdaptorBase(nodeName){
@@ -30,7 +30,7 @@ exports.init = function(nodeName,redisHost,redisPort)
     thisAdaptor.redisHost = redisHost;
     thisAdaptor.redisPort = redisPort;
 
-    thisAdaptor.connectedClients = {};
+    thisAdaptor.connectedOutlets = {};
 
 
     var cleanMessage = {
@@ -180,7 +180,7 @@ AdaptorBase.prototype.onBroadcast = function(message){
     }
 }
 
-AdaptorBase.prototype.findOutlet(sessionId){
+AdaptorBase.prototype.findOutlet= function(sessionId){
     return thisAdaptor.connectedOutlets[sessionId];
 }
 
@@ -193,31 +193,36 @@ function newOutlet(socketParam){
         clientSessionId:null,
         loginSwarmingVariables:null,
         onChannelNewMessage:function (channel, message) {
-            writeFastJSON(socket,message);
+            util.writeObject(socket,message);
         },
         successfulLogin:function (swarmingVariables) {
             this.redisClient = redis.createClient(thisAdaptor.redisPort,thisAdaptor.redisHost);
             this.redisClient.subscribe(this.clientSessionId);
             this.redisClient.on("message",outlet.onChannelNewMessage.bind());
             this.loginSwarmingVariables = swarmingVariables;
-            this.execute = this.executeSafe;
+            this.currentExecute = this.executeSafe;
         },
-        execute : null,
+        close:function () {
+            if(this.redisClient != null){
+                this.redisClient.close();
+            }
+            delete thisAdaptor.connectedOutlets[this.clientSessionId];
+        },
+        currentExecute:null,
+        execute : function(messageObj){
+            currentExecute(messageObj);
+        },
         executeButNotIdentified : function (messageObj){
             if(messageObj.clientSessionId != null){
                 this.clientSessionId = messageObj.clientSessionId;
-                thisAdaptor.connectedOutlets[]
-            }
+                if(thisAdaptor.connectedOutlets[messageObj.clientSessionId] != undefined)
+                {
+                    thisAdaptor.connectedOutlets[messageObj.clientSessionId] = this;
+                    this.socketParam.close();
+                }
+             }
             else{
-
-            }
-
-
-            if(messageObj.swarmingName != thisAdaptor.loginSwarmingName ){
-                Console.log("Could not execute [" +messageObj.swarmingName +"] swarming without being logged in");
-            }
-            else{
-                executeSafe(messageObj);
+                currentExecute = this.executeButNotAuthenticated;
             }
         },
         executeButNotAuthenticated : function (messageObj){
@@ -231,7 +236,6 @@ function newOutlet(socketParam){
                 executeSafe(messageObj);
             }
         },
-
         executeSafe : function (messageObj){
                 if(messageObj.command == "start"){
                     var swarming = new SwarmingPhase(messageObj.swarmingName,"start");
@@ -240,7 +244,6 @@ function newOutlet(socketParam){
                     for (var i in initVars){
                         swarming[i] = initVars[i];
                     }
-
                     for (var i in messageObj){
                         swarming[i] = initVars[i];
                     }
@@ -260,14 +263,22 @@ function newOutlet(socketParam){
                 }
             }
     };
-    outlet.execute = outlet.executeButNotAuthenticated;
-    var parser = require("FastJSONParser").createFastParser(outlet.execute.bind(outlet));
+    outlet.currentExecute = outlet.executeButNotAuthenticated;
+    var parser = util.createFastParser(outlet.execute.bind(outlet));
 
     socketParam.on('data', function (data){
         parser.parseNewData(data.toString('utf8'));
+        //parser.parseNewData(data.toString('utf8');
+    });
+
+    socketParam.on('error',outlet.close.bind(outlet));
+    socketParam.on('close',outlet.close.bind(outlet));
     });
 
     return outlet;
 }
 
 
+AdaptorBase.prototype.addAPI(functionName,apiFunction){
+    SwarmingPhase.prototype.functionName = apiFunction;
+}

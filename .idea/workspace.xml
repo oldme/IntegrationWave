@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="004f0feb-27b1-446b-a4d8-0be5520a6a2b" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\work\BlueCluster\src\BlueUtil.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\BlueCluster\src\FastJSONParser.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\BlueCluster\test\FastJSONParserTest.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Logger.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/waves/log.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Adaptor.js" afterPath="$PROJECT_DIR$/src/Adaptor.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ClientAdaptor.js" afterPath="$PROJECT_DIR$/src/ClientAdaptor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core.js" afterPath="$PROJECT_DIR$/src/Core.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ClientTest.js" afterPath="$PROJECT_DIR$/test/ClientTest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/waves/BenchMark.js" afterPath="$PROJECT_DIR$/waves/BenchMark.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/waves/LaunchingTest.js" afterPath="$PROJECT_DIR$/waves/LaunchingTest.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/waves/login.js" afterPath="$PROJECT_DIR$/waves/login.js" />
     </list>
     <ignored path="BlueCluster.iws" />
@@ -34,19 +30,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Adaptor.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Adaptor.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Adaptor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="206" column="47" selection-start="6545" selection-end="6545" vertical-scroll-proportion="0.47927928">
+            <state line="281" column="55" selection-start="9552" selection-end="9552" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientTest.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ClientTest.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/ClientTest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="3" column="0" selection-start="3" selection-end="3" vertical-scroll-proportion="0.085141905">
               <folding />
             </state>
           </provider>
@@ -55,7 +51,7 @@
       <file leaf-file-name="login.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/waves/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="34" selection-start="897" selection-end="907" vertical-scroll-proportion="0.0">
+            <state line="5" column="5" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -64,7 +60,25 @@
       <file leaf-file-name="ClientAdaptor.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ClientAdaptor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="36" selection-start="1133" selection-end="1133" vertical-scroll-proportion="0.0">
+            <state line="39" column="2" selection-start="1072" selection-end="1072" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Logger.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Logger.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="log.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/waves/log.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="5" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -110,8 +124,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/waves/TestPlay.js" />
-        <option value="$PROJECT_DIR$/waves/TestPlay.js" />
         <option value="$PROJECT_DIR$/waves/etc/launch" />
         <option value="$PROJECT_DIR$/src/ServerTcp.js" />
         <option value="$PROJECT_DIR$/etc/core" />
@@ -119,21 +131,23 @@
         <option value="$PROJECT_DIR$/test/FastJSONParserTest.js" />
         <option value="$PROJECT_DIR$/src/BlueUtil.js" />
         <option value="$PROJECT_DIR$/../nodeDeps/node_modules/swarmutil/lib/BlueUtils.js" />
-        <option value="$PROJECT_DIR$/waves/login.js" />
-        <option value="$PROJECT_DIR$/src/ClientAdaptor.js" />
         <option value="$PROJECT_DIR$/waves/BenchMark.js" />
         <option value="$PROJECT_DIR$/waves/LaunchingTest.js" />
         <option value="$PROJECT_DIR$/src/Core.js" />
-        <option value="$PROJECT_DIR$/test/ClientTest.js" />
+        <option value="$PROJECT_DIR$/waves/login.js" />
         <option value="$PROJECT_DIR$/src/Adaptor.js" />
+        <option value="$PROJECT_DIR$/src/Logger.js" />
+        <option value="$PROJECT_DIR$/waves/log.js" />
+        <option value="$PROJECT_DIR$/src/ClientAdaptor.js" />
+        <option value="$PROJECT_DIR$/test/ClientTest.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1288" />
-    <option name="y" value="18" />
-    <option name="width" value="1296" />
-    <option name="height" value="1040" />
+    <option name="x" value="54" />
+    <option name="y" value="-8" />
+    <option name="width" value="1320" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -175,7 +189,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BlueCluster" />
+              <option name="myItemId" value="SwarmingEngine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -189,7 +203,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BlueCluster" />
+              <option name="myItemId" value="SwarmingEngine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -203,7 +217,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BlueCluster" />
+              <option name="myItemId" value="SwarmingEngine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -217,7 +231,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BlueCluster" />
+              <option name="myItemId" value="SwarmingEngine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -238,19 +252,21 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="fileTemplates" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="recentsLimit" value="5" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\work\SwarmingEngine\waves" />
+      <recent name="C:\work\SwarmingEngine\src" />
       <recent name="D:\work\BlueCluster\waves" />
       <recent name="C:\work\IntegrationWave\waves" />
     </key>
   </component>
   <component name="RunManager" selected="Node JS.ClientTest.js">
-    <configuration default="false" name="Core.js" type="NodeJSConfigurationType" factoryName="Node JS" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="src/Core.js" working-dir="$PROJECT_DIR$">
+    <configuration default="false" name="Core.js" type="NodeJSConfigurationType" factoryName="Node JS" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="src/Core.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
       <RunnerSettings RunnerId="NodeJS.debug" />
       <RunnerSettings RunnerId="NodeJS.run" />
       <ConfigurationWrapper RunnerId="NodeJS.debug" />
@@ -285,7 +301,7 @@
       </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
-    <configuration default="false" name="ClientTest.js" type="NodeJSConfigurationType" factoryName="Node JS" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="test/ClientTest.js" working-dir="$PROJECT_DIR$">
+    <configuration default="false" name="ClientTest.js" type="NodeJSConfigurationType" factoryName="Node JS" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="test/ClientTest.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
       <RunnerSettings RunnerId="NodeJS.debug" />
       <RunnerSettings RunnerId="NodeJS.run" />
       <ConfigurationWrapper RunnerId="NodeJS.debug" />
@@ -352,17 +368,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1288" y="18" width="1296" height="1040" extended-state="6" />
+    <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31424025" sideWeight="0.67386365" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22248244" sideWeight="0.9599359" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24318182" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32613635" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32511556" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -438,56 +454,62 @@
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript5.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="19" selection-start="2790" selection-end="2790" vertical-scroll-proportion="0.44822258">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ClientAdaptor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="36" selection-start="1133" selection-end="1133" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/waves/BenchMark.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="19" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/waves/LaunchingTest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="19" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="149" column="19" selection-start="2790" selection-end="2790" vertical-scroll-proportion="0.44822258" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="48" selection-start="1593" selection-end="1593" vertical-scroll-proportion="0.0">
+        <state line="65" column="48" selection-start="1593" selection-end="1593" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/waves/BenchMark.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="19" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/waves/LaunchingTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="19" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Adaptor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="281" column="55" selection-start="9552" selection-end="9552" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/ClientTest.js">
+    <entry file="file://$PROJECT_DIR$/waves/log.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="5" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logger.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/waves/login.js">
+    <entry file="file://$PROJECT_DIR$/src/ClientAdaptor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="34" selection-start="897" selection-end="907" vertical-scroll-proportion="0.0">
+        <state line="39" column="2" selection-start="1072" selection-end="1072" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Adaptor.js">
+    <entry file="file://$PROJECT_DIR$/waves/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="206" column="47" selection-start="6545" selection-end="6545" vertical-scroll-proportion="0.47927928">
+        <state line="5" column="5" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ClientTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="3" selection-end="3" vertical-scroll-proportion="0.085141905">
           <folding />
         </state>
       </provider>

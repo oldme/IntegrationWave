@@ -36,7 +36,7 @@ var loginSwarming =
     failed:{   //phase
         node:"ClientAdaptor",
         code : function (){
-            thisAdaptor.findOutlet(this.clientSessionId).failLogin(this);
+            thisAdaptor.findOutlet(this.clientSessionId).close();
         }
     }
 };

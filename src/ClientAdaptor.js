@@ -15,32 +15,21 @@ var redisPort       = 6379;
 var thisAdaptor;
 var serverPort      = 3000;
 
-
-thisAdaptor.addAPIFunction("", function()
-    {
-
-    }
-);
+thisAdaptor.addAPIFunction("log", console.log);
 
 
-function registerSuccessLogin(){
-
-}
-
-
-function ClientTcpServer(port,adaptor)
-{
+function ClientTcpServer(port,adaptor){
     console.log("Starting client server on 3000");
     var net   	= require('net');
     this.server = net.createServer(
         function (socket){
-            var outlet = thisAdaptor.newOutlet(socket);
+            thisAdaptor.newOutlet(socket);
         }
     );
     this.server.listen(port);
 };
 
-process.on('message', function(m) {
+process.on('message', function(m){
     //console.log('CHILD got message:', m);
     redisHost       = m.redisHost;
     redisPort       = m.redisPort;
