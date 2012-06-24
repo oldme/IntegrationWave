@@ -174,7 +174,13 @@ AdaptorBase.prototype.swarmBegin = function (swarmingName){
     var start = thisAdaptor.compiledSwarmingDescriptions[swarmingName]["start"];
     var argsArray = Array.prototype.slice.call(arguments);
     argsArray.shift();
-    start.apply(swarming,argsArray);
+    try{
+        start.apply(swarming,argsArray);
+    }
+    catch (err){
+        printPhaseError(err,swarmingPhase.swarmingName,"start","none");
+    }
+
 }
 
 SwarmingPhase.prototype.swarmBegin = AdaptorBase.prototype.swarm;
@@ -283,7 +289,12 @@ AdaptorBase.prototype.newOutlet = function(socketParam){
                         var start = thisAdaptor.compiledSwarmingDescriptions[messageObj.swarmingName]["start"];
                     var args = messageObj.commandArguments;
                     delete swarming.commandArguments;
-                    start.apply(swarming,args);
+                    try{
+                        start.apply(swarming,args);
+                    }
+                    catch (err){
+                        printPhaseError(err,messageObj.swarmingName,"start","none");
+                    }
                 }
                 else
                 if(messageObj.command == "phase"){
