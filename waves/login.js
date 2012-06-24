@@ -3,15 +3,15 @@ var loginSwarming =
 {
     vars:{
         isOk:false,
-        clientSession:null,
-        debug:"false"
+        sessionId:null,
+        debug:"swarm1"
     },
     start:function(clientSessionId,userId,authorisationToken){
         this.isOk=false;
+        this.sessionId   = clientSessionId;
+        this.userId     = userId;
+        this.authorisationToken  = authorisationToken;
         this.swarm("check");
-        this.clientSessionId = clientSessionId;
-        this.userId     =   userId;
-        this.authorisationToken  =   authorisationToken;
     },
     check:{ //phase that should be replaced. Use your own security provider adaptor
         node:"Core",
@@ -28,15 +28,21 @@ var loginSwarming =
     success:{   //phase
         node:"ClientAdaptor",
         code : function (){
-            console.log("Success login for " + this.userId);
-            thisAdaptor.findOutlet(this.clientSessionId).successfulLogin(this);
+            console.log("Successful login for " + this.userId);
+            thisAdaptor.findOutlet(this.sessionId).successfulLogin(this);
+            this.swarm("home",this.sessionId);
         }
+    },
+
+    home:{   //phase executed on client
+        node:"$client",
+        code : null
     },
 
     failed:{   //phase
         node:"ClientAdaptor",
         code : function (){
-            thisAdaptor.findOutlet(this.clientSessionId).close();
+            thisAdaptor.findOutlet(this.sessionId).close();
         }
     }
 };

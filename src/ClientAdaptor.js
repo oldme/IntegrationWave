@@ -5,17 +5,13 @@
  * Time: 10:52 PM
  * To change this template use File | Settings | File Templates.
  */
-process.on('uncaughtException', function(err) {
-        console.log("" + err);
-        console.log(err.stack);
-});
 
 var redisHost       = "localhost";
 var redisPort       = 6379;
 var thisAdaptor;
 var serverPort      = 3000;
 
-thisAdaptor.addAPIFunction("log", console.log);
+
 
 
 function ClientTcpServer(port,adaptor){
@@ -34,6 +30,7 @@ process.on('message', function(m){
     redisHost       = m.redisHost;
     redisPort       = m.redisPort;
     thisAdaptor = require('./Adaptor.js').init("ClientAdaptor",redisHost,redisPort);
+    thisAdaptor.addAPI("log", console.log);
     thisAdaptor.loadSwarmingCode();
     thisAdaptor.loginSwarmingName = "login.js";
     new ClientTcpServer(serverPort);
