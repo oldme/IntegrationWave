@@ -11,19 +11,6 @@
 
 */
 
-process.on('uncaughtException', function(err) {
-
-    if( err  instanceof ReferenceError){
-        console.log(err);
-        console.log(err.stack);
-    }
-    else
-    {
-        console.log("" + err);
-        console.log(err.stack);
-    }
-});
-
 var descriptionsFolder   = "waves";
 var redisHost       = "localhost";
 var redisPort       = 6379;
@@ -62,8 +49,8 @@ for(var i=0;i<cfg.processes.length;i++){
 
 setTimeout(
     function(){
-        adaptor.startWave("LaunchingTest.js");
-        adaptor.startWave("BenchMark.js",10000);
+        adaptor.swarmBegin("LaunchingTest.js");
+        adaptor.swarmBegin("BenchMark.js",10000);
     },
 1000);
 

@@ -6,8 +6,8 @@
 
 var redis = require("redis");
 var fs = require('fs');
-var blueUtil = require("../src/BlueUtil").init();
-
+var util = require("swarmutil");
+var nutil = require("util");
 
 function AdaptorBase(nodeName){
     this.nodeName = nodeName;
@@ -30,8 +30,8 @@ exports.init = function(nodeName,redisHost,redisPort)
     thisAdaptor.redisHost = redisHost;
     thisAdaptor.redisPort = redisPort;
 
-    thisAdaptor.connectedClients = {};
-
+    thisAdaptor.connectedOutlets = {};
+    thisAdaptor.addGlobalErrorHandler();
 
     var cleanMessage = {
         scope:"broadcast",
@@ -67,9 +67,13 @@ AdaptorBase.prototype.onMessageFromQueue = function(initVars,rawMessage){
     }
     var phaseFunction = thisAdaptor.compiledSwarmingDescriptions[swarmingPhase.swarmingName][swarmingPhase.currentPhase].code;
     if(phaseFunction != null){
-        phaseFunction.apply(swarmingPhase);
+        try{
+            phaseFunction.apply(swarmingPhase);
+        }
+        catch (err){
+            printPhaseError(err,swarmingPhase.swarmingName,swarmingPhase.currentPhase,swarmingPhase);
+        }
     }
-
     else{
         if(thisAdaptor.onMessageCallback != null){
             thisAdaptor.onMessageCallback(message);
@@ -143,31 +147,43 @@ function SwarmingPhase(swarmingName,phase){
     this.currentPhase    = phase;
 }
 
-SwarmingPhase.prototype.swarm = function(phaseName){
-    //console.log(this.swarmingName);
-    //console.log(phaseName);
-    this.currentPhase = phaseName;
-    var targetActorName = thisAdaptor.compiledSwarmingDescriptions[this.swarmingName][phaseName].node;
-    if(this.debug == "true"){
-            console.log("[" +thisAdaptor.nodeName + "] is sending message for adaptor [" + targetActorName + "]: " + JSON.stringify(this));
+SwarmingPhase.prototype.swarm = function(phaseName,nodeHint){
+    if(this.debug == "swarm"){
+        console.log("Swarm debug: " + this.swarmingName +" phase: " + phaseName);
     }
-    redisClient.publish(targetActorName,JSON.stringify(this));
+
+    this.currentPhase = phaseName;
+    var targetNodeName = nodeHint;
+    if(nodeHint == undefined){
+        targetNodeName = thisAdaptor.compiledSwarmingDescriptions[this.swarmingName][phaseName].node;
+    }
+    if(this.debug == "swarm"){
+            console.log("[" +thisAdaptor.nodeName + "] is sending command to [" + targetNodeName + "]: " + JSON.stringify(this));
+    }
+    redisClient.publish(targetNodeName,JSON.stringify(this));
 };
 
-AdaptorBase.prototype.startSwarming = function (swarmingName){
+AdaptorBase.prototype.swarmBegin = function (swarmingName){
     var swarming = new SwarmingPhase(swarmingName,"start");
     //console.log(thisAdaptor.compiledWaves[swarmingName]);
     var initVars = thisAdaptor.compiledSwarmingDescriptions[swarmingName].vars;
     for (var i in initVars){
         swarming[i] = initVars[i];
     }
+    swarming.command = "phase";
     var start = thisAdaptor.compiledSwarmingDescriptions[swarmingName]["start"];
     var argsArray = Array.prototype.slice.call(arguments);
     argsArray.shift();
-    start.apply(swarming,argsArray);
+    try{
+        start.apply(swarming,argsArray);
+    }
+    catch (err){
+        printPhaseError(err,swarmingPhase.swarmingName,"start","none");
+    }
+
 }
 
-SwarmingPhase.prototype.startWave = AdaptorBase.prototype.startWave;
+SwarmingPhase.prototype.swarmBegin = AdaptorBase.prototype.swarm;
 
 
 AdaptorBase.prototype.onBroadcast = function(message){
@@ -180,75 +196,105 @@ AdaptorBase.prototype.onBroadcast = function(message){
     }
 }
 
-AdaptorBase.prototype.findOutlet(sessionId){
+//
+//AdaptorBase.prototype.addOutlet = function(sessionId,outlet){
+//    thisAdaptor.connectedOutlets[sessionId] = outlet;
+//}
+
+AdaptorBase.prototype.findOutlet = function(sessionId){
     return thisAdaptor.connectedOutlets[sessionId];
 }
 
 
 
-function newOutlet(socketParam){
+AdaptorBase.prototype.newOutlet = function(socketParam){
     var outlet={
         redisClient:null,
         socket:socketParam,
-        clientSessionId:null,
+        sessionId:null,
         loginSwarmingVariables:null,
+        waitingMsg:null,
+        isClosed:false,
         onChannelNewMessage:function (channel, message) {
-            writeFastJSON(socket,message);
+            //console.log("Waw: " + message);
+            util.writeSizedString(this.socket,message);
         },
         successfulLogin:function (swarmingVariables) {
-            this.redisClient = redis.createClient(thisAdaptor.redisPort,thisAdaptor.redisHost);
-            this.redisClient.subscribe(this.clientSessionId);
-            this.redisClient.on("message",outlet.onChannelNewMessage.bind());
+
             this.loginSwarmingVariables = swarmingVariables;
-            this.execute = this.executeSafe;
+            this.currentExecute = this.executeSafe;
         },
-        execute : null,
+        close:function () {
+            if(!this.isClosed){
+                console.log("Closing outlet " + this.sessionId)
+                if(this.redisClient != null){
+                    this.redisClient.quit();
+                }
+                delete thisAdaptor.connectedOutlets[this.sessionId];
+                this.socket.destroy();
+                this.isClosed = true;
+            }
+        },
+        currentExecute:null,
+        execute : function(messageObj){
+            this.currentExecute(messageObj);
+        },
         executeButNotIdentified : function (messageObj){
-            if(messageObj.clientSessionId != null){
-                this.clientSessionId = messageObj.clientSessionId;
-                thisAdaptor.connectedOutlets[]
+            if(messageObj.sessionId == null){
+                console.log("Wrong begin message" + JSON.stringify(messageObj));
+                this.close();
+                return;
             }
-            else{
+            var existingOultet = thisAdaptor.connectedOutlets[messageObj.sessionId];
+            if( existingOultet != null){
+                console.log("Disconnecting already connected session " + JSON.stringify(messageObj));
+                existingOultet.close(); //disconnect the other client,may be is hanging..
+            }
 
-            }
+            thisAdaptor.connectedOutlets[messageObj.sessionId] = this;
 
+            this.sessionId = messageObj.sessionId;
+            this.currentExecute = this.executeButNotAuthenticated;
+            this.redisClient = redis.createClient(thisAdaptor.redisPort,thisAdaptor.redisHost);
+            this.redisClient.subscribe(this.sessionId);
+            this.redisClient.on("message",this.onChannelNewMessage.bind(this));
 
-            if(messageObj.swarmingName != thisAdaptor.loginSwarmingName ){
-                Console.log("Could not execute [" +messageObj.swarmingName +"] swarming without being logged in");
-            }
-            else{
-                executeSafe(messageObj);
-            }
+            outlet.waitingMsg = messageObj;;
+            this.redisClient.on("connect",function(){
+                    this.executeButNotAuthenticated(this.waitingMsg);
+            }.bind(this));
         },
         executeButNotAuthenticated : function (messageObj){
-            if(messageObj.clientSessionId != null)
-            thisAdaptor.connectedOutlets
-
             if(messageObj.swarmingName != thisAdaptor.loginSwarmingName ){
                 Console.log("Could not execute [" +messageObj.swarmingName +"] swarming without being logged in");
+                this.close();
             }
             else{
-                executeSafe(messageObj);
+                this.executeSafe(messageObj);
             }
         },
-
         executeSafe : function (messageObj){
                 if(messageObj.command == "start"){
                     var swarming = new SwarmingPhase(messageObj.swarmingName,"start");
+                    //console.log("Execute debug: " + JSON.stringify(messageObj))
                     //console.log(thisAdaptor.compiledWaves[swarmingName]);
-                    var initVars = thisAdaptor.compiledSwarmingDescriptions[swarmingName].vars;
+                    var initVars = thisAdaptor.compiledSwarmingDescriptions[messageObj.swarmingName].vars;
                     for (var i in initVars){
                         swarming[i] = initVars[i];
                     }
-
                     for (var i in messageObj){
-                        swarming[i] = initVars[i];
+                        swarming[i] = messageObj[i];
                     }
-
-                    var start = thisAdaptor.compiledSwarmingDescriptions[messageObj.swarmingName]["start"];
-                    var argsArray = Array.prototype.slice.call();
-                    argsArray.shift();
-                    start.apply(swarming,messageObj.commandArguments);
+                    swarming.command = "phase";
+                        var start = thisAdaptor.compiledSwarmingDescriptions[messageObj.swarmingName]["start"];
+                    var args = messageObj.commandArguments;
+                    delete swarming.commandArguments;
+                    try{
+                        start.apply(swarming,args);
+                    }
+                    catch (err){
+                        printPhaseError(err,messageObj.swarmingName,"start","none");
+                    }
                 }
                 else
                 if(messageObj.command == "phase"){
@@ -260,14 +306,34 @@ function newOutlet(socketParam){
                 }
             }
     };
-    outlet.execute = outlet.executeButNotAuthenticated;
-    var parser = require("FastJSONParser").createFastParser(outlet.execute.bind(outlet));
+    outlet.currentExecute = outlet.executeButNotIdentified;
+    var parser = util.createFastParser(outlet.execute.bind(outlet));
 
     socketParam.on('data', function (data){
         parser.parseNewData(data.toString('utf8'));
+        //parser.parseNewData(data.toString('utf8');
     });
+
+    socketParam.on('error',outlet.close.bind(outlet));
+    socketParam.on('close',outlet.close.bind(outlet));
 
     return outlet;
 }
 
+
+AdaptorBase.prototype.addAPI = function(functionName,apiFunction){
+    SwarmingPhase.prototype.functionName = apiFunction;
+}
+
+function printPhaseError(err,swarm,phase,myThis){
+    console.log("ERROR caught in ["+ thisAdaptor.nodeName + "] for swarm \"" + swarm + "\" phase {"+ phase+"} Context:\n" + nutil.inspect(myThis));
+    //if( err  instanceof ReferenceError){
+        console.log(err.stack);
+}
+
+AdaptorBase.prototype.addGlobalErrorHandler = function(){
+    process.on('uncaughtException', function(err) {
+        console.log(err.stack);
+    });
+}
 

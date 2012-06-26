@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="004f0feb-27b1-446b-a4d8-0be5520a6a2b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Logger.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/waves/log.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Adaptor.js" afterPath="$PROJECT_DIR$/src/Adaptor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ClientAdaptor.js" afterPath="$PROJECT_DIR$/src/ClientAdaptor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core.js" afterPath="$PROJECT_DIR$/src/Core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ClientTest.js" afterPath="$PROJECT_DIR$/test/ClientTest.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/waves/login.js" afterPath="$PROJECT_DIR$/waves/login.js" />
     </list>
     <ignored path="BlueCluster.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,7 +33,7 @@
       <file leaf-file-name="login.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/waves/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="57" selection-start="642" selection-end="642" vertical-scroll-proportion="0.5415929">
+            <state line="21" column="57" selection-start="631" selection-end="631" vertical-scroll-proportion="0.030088495">
               <folding />
             </state>
           </provider>
@@ -36,7 +42,7 @@
       <file leaf-file-name="ClientAdaptor.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ClientAdaptor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="36" selection-start="1133" selection-end="1133" vertical-scroll-proportion="0.0">
+            <state line="39" column="36" selection-start="958" selection-end="958" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -45,7 +51,7 @@
       <file leaf-file-name="Core.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Core.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="48" selection-start="1593" selection-end="1593" vertical-scroll-proportion="0.0">
+            <state line="58" column="48" selection-start="1370" selection-end="1370" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -210,10 +216,10 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="fileTemplates" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="recentsLimit" value="5" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -222,7 +228,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Node JS.ClientTest.js">
-    <configuration default="false" name="Core.js" type="NodeJSConfigurationType" factoryName="Node JS" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="src/Core.js" working-dir="$PROJECT_DIR$">
+    <configuration default="false" name="Core.js" type="NodeJSConfigurationType" factoryName="Node JS" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="src/Core.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
       <RunnerSettings RunnerId="NodeJS.debug" />
       <RunnerSettings RunnerId="NodeJS.run" />
       <ConfigurationWrapper RunnerId="NodeJS.debug" />
@@ -257,7 +263,7 @@
       </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
-    <configuration default="false" name="ClientTest.js" type="NodeJSConfigurationType" factoryName="Node JS" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="test/ClientTest.js" working-dir="$PROJECT_DIR$">
+    <configuration default="false" name="ClientTest.js" type="NodeJSConfigurationType" factoryName="Node JS" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="test/ClientTest.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
       <RunnerSettings RunnerId="NodeJS.debug" />
       <RunnerSettings RunnerId="NodeJS.run" />
       <ConfigurationWrapper RunnerId="NodeJS.debug" />
@@ -329,9 +335,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1288" y="18" width="1296" height="1040" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -346,6 +351,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -420,34 +426,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ClientAdaptor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="36" selection-start="1133" selection-end="1133" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/waves/BenchMark.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="19" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/waves/LaunchingTest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="19" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="48" selection-start="1593" selection-end="1593" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Adaptor.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="273" column="14" selection-start="0" selection-end="9037" vertical-scroll-proportion="0.81621623">
@@ -464,7 +442,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/waves/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="57" selection-start="642" selection-end="642" vertical-scroll-proportion="0.5415929">
+        <state line="21" column="57" selection-start="631" selection-end="631" vertical-scroll-proportion="0.030088495">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ClientAdaptor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="36" selection-start="958" selection-end="958" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="48" selection-start="1370" selection-end="1370" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/waves/BenchMark.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="19" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/waves/LaunchingTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="19" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
