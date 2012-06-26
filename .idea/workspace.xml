@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="004f0feb-27b1-446b-a4d8-0be5520a6a2b" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\work\BlueCluster\src\BlueUtil.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\BlueCluster\src\FastJSONParser.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\BlueCluster\test\FastJSONParserTest.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Adaptor.js" afterPath="$PROJECT_DIR$/src/Adaptor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ClientAdaptor.js" afterPath="$PROJECT_DIR$/src/ClientAdaptor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Core.js" afterPath="$PROJECT_DIR$/src/Core.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ClientTest.js" afterPath="$PROJECT_DIR$/test/ClientTest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/waves/BenchMark.js" afterPath="$PROJECT_DIR$/waves/BenchMark.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/waves/LaunchingTest.js" afterPath="$PROJECT_DIR$/waves/LaunchingTest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/waves/login.js" afterPath="$PROJECT_DIR$/waves/login.js" />
     </list>
     <ignored path="BlueCluster.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,28 +24,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Adaptor.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Adaptor.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="206" column="47" selection-start="6545" selection-end="6545" vertical-scroll-proportion="0.47927928">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientTest.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/ClientTest.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="login.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/waves/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="34" selection-start="897" selection-end="907" vertical-scroll-proportion="0.0">
+            <state line="21" column="57" selection-start="642" selection-end="642" vertical-scroll-proportion="0.5415929">
               <folding />
             </state>
           </provider>
@@ -328,7 +300,11 @@
       <created>1339330380144</created>
       <updated>1339330380144</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Work in progress for ClientAdaptor">
+      <created>1340382525283</created>
+      <updated>1340382525283</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -353,23 +329,23 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1288" y="18" width="1296" height="1040" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31424025" sideWeight="0.67386365" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31424025" sideWeight="0.67045456" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24318182" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32613635" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32613635" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -412,7 +388,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="woking version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Work in progress for ClientAdaptor" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -426,6 +402,7 @@
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="woking version" />
+    <MESSAGE value="Work in progress for ClientAdaptor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -471,6 +448,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Adaptor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="273" column="14" selection-start="0" selection-end="9037" vertical-scroll-proportion="0.81621623">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/ClientTest.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -480,14 +464,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/waves/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="34" selection-start="897" selection-end="907" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Adaptor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="206" column="47" selection-start="6545" selection-end="6545" vertical-scroll-proportion="0.47927928">
+        <state line="21" column="57" selection-start="642" selection-end="642" vertical-scroll-proportion="0.5415929">
           <folding />
         </state>
       </provider>
