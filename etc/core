@@ -1,6 +1,9 @@
 {
 "processes":[
-        "src/ClientAdaptor.js"
+        "src/ClientAdaptor.js",
+        "src/ChatPersistence.js",
+        "src/FollowerListService.js",
+        "src/Logger.js"
        ],
  "redisHost":"localhost",
  "redisPort":6379,

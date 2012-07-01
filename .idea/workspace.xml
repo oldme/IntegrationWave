@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="004f0feb-27b1-446b-a4d8-0be5520a6a2b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ChatPersistence.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/FollowerListService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Adaptor.js" afterPath="$PROJECT_DIR$/src/Adaptor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/etc/core" afterPath="$PROJECT_DIR$/etc/core" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/waves/chat.js" afterPath="$PROJECT_DIR$/waves/chat.js" />
     </list>
     <ignored path="BlueCluster.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,33 +28,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Adaptor.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Adaptor.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="169" column="28" selection-start="5244" selection-end="5244" vertical-scroll-proportion="0.66295266">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SwarmUtils.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../external/node_modules/swarmutil/lib/SwarmUtils.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="0" selection-start="1896" selection-end="1896" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientTest.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/ClientTest.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="44" selection-start="764" selection-end="764" vertical-scroll-proportion="-13.4">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="login.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/waves/login.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -91,7 +67,43 @@
       <file leaf-file-name="BenchMark.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/waves/BenchMark.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="19" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
+            <state line="7" column="14" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chat.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/waves/chat.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="49" column="40" selection-start="1421" selection-end="1433" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FollowerListService.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FollowerListService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="2" selection-start="484" selection-end="484" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="core" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/etc/core">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="23" selection-start="143" selection-end="143" vertical-scroll-proportion="0.2254642">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChatPersistence.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ChatPersistence.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="0" selection-start="790" selection-end="790" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -124,10 +136,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/etc/core" />
-        <option value="$PROJECT_DIR$/src/FastJSONParser.js" />
-        <option value="$PROJECT_DIR$/test/FastJSONParserTest.js" />
-        <option value="$PROJECT_DIR$/src/BlueUtil.js" />
         <option value="$PROJECT_DIR$/../nodeDeps/node_modules/swarmutil/lib/BlueUtils.js" />
         <option value="$PROJECT_DIR$/waves/BenchMark.js" />
         <option value="$PROJECT_DIR$/waves/LaunchingTest.js" />
@@ -140,6 +148,10 @@
         <option value="$PROJECT_DIR$/waves/login.js" />
         <option value="$PROJECT_DIR$/test/ClientTest.js" />
         <option value="$PROJECT_DIR$/src/Adaptor.js" />
+        <option value="$PROJECT_DIR$/src/ChatPersistence.js" />
+        <option value="$PROJECT_DIR$/waves/chat.js" />
+        <option value="$PROJECT_DIR$/etc/core" />
+        <option value="$PROJECT_DIR$/src/FollowerListService.js" />
       </list>
     </option>
   </component>
@@ -175,16 +187,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -244,6 +246,20 @@
               <option name="myItemId" value="SwarmingEngine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="etc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -252,20 +268,20 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="fileTemplates" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="recentsLimit" value="5" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\work\SwarmingEngine\waves" />
       <recent name="C:\work\SwarmingEngine\src" />
+      <recent name="C:\work\SwarmingEngine\waves" />
       <recent name="D:\work\BlueCluster\waves" />
       <recent name="C:\work\IntegrationWave\waves" />
     </key>
   </component>
-  <component name="RunManager" selected="Node JS.ClientTest.js">
+  <component name="RunManager" selected="Node JS.Core.js">
     <configuration default="false" name="ClientAdaptor.js" type="NodeJSConfigurationType" factoryName="Node JS" temporary="true" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="$PROJECT_DIR$/src/ClientAdaptor.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
       <RunnerSettings RunnerId="NodeJS.run" />
       <ConfigurationWrapper RunnerId="NodeJS.run" />
@@ -278,17 +294,15 @@
       <ConfigurationWrapper RunnerId="NodeJS.run" />
       <method />
     </configuration>
-    <configuration default="false" name="Core.js" type="NodeJSConfigurationType" factoryName="Node JS" temporary="true" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="$PROJECT_DIR$/src/Core.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
+    <configuration default="false" name="ClientTest.js" type="NodeJSConfigurationType" factoryName="Node JS" temporary="true" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="$PROJECT_DIR$/test/ClientTest.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
       <RunnerSettings RunnerId="NodeJS.debug" />
       <RunnerSettings RunnerId="NodeJS.run" />
       <ConfigurationWrapper RunnerId="NodeJS.debug" />
       <ConfigurationWrapper RunnerId="NodeJS.run" />
       <method />
     </configuration>
-    <configuration default="false" name="ClientTest.js" type="NodeJSConfigurationType" factoryName="Node JS" temporary="true" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="$PROJECT_DIR$/test/ClientTest.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
-      <RunnerSettings RunnerId="NodeJS.debug" />
+    <configuration default="false" name="Core.js" type="NodeJSConfigurationType" factoryName="Node JS" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="$PROJECT_DIR$/src/Core.js" working-dir="$PROJECT_DIR$" coffeescript-run="false">
       <RunnerSettings RunnerId="NodeJS.run" />
-      <ConfigurationWrapper RunnerId="NodeJS.debug" />
       <ConfigurationWrapper RunnerId="NodeJS.run" />
       <method />
     </configuration>
@@ -311,8 +325,8 @@
     <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Node JS.ClientAdaptor.js" />
       <item index="1" class="java.lang.String" itemvalue="Node JS.FastJSONParserTest.js" />
-      <item index="2" class="java.lang.String" itemvalue="Node JS.Core.js" />
-      <item index="3" class="java.lang.String" itemvalue="Node JS.ClientTest.js" />
+      <item index="2" class="java.lang.String" itemvalue="Node JS.ClientTest.js" />
+      <item index="3" class="java.lang.String" itemvalue="Node JS.Core.js" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -356,7 +370,19 @@
       <created>1340564324424</created>
       <updated>1340564324424</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="ClientAdaptor is finally working and tested,ready to rumble!">
+      <created>1340565027823</created>
+      <updated>1340565027823</updated>
+    </task>
+    <task id="LOCAL-00006" summary="chat example">
+      <created>1340829104137</created>
+      <updated>1340829104137</updated>
+    </task>
+    <task id="LOCAL-00007" summary="work for chat functionality">
+      <created>1341176656290</created>
+      <updated>1341176656290</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -440,7 +466,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="ClientAdaptor is finally working and tested,ready to rumble!" />
+    <option name="LAST_COMMIT_MESSAGE" value="work for chat functionality" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -456,16 +482,13 @@
     <MESSAGE value="woking version" />
     <MESSAGE value="improvements ip" />
     <MESSAGE value="ClientAdaptor is finally working and tested,ready to rumble!" />
+    <MESSAGE value="chat example" />
+    <MESSAGE value="work for chat functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/etc/core">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="1" selection-start="3" selection-end="12" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript5.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="149" column="19" selection-start="2790" selection-end="2790" vertical-scroll-proportion="0.44822258" />
@@ -481,9 +504,43 @@
         <state line="9" column="5" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/waves/BenchMark.js">
+    <entry file="file://$PROJECT_DIR$/src/Adaptor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="19" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0" />
+        <state line="121" column="31" selection-start="3527" selection-end="3558" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../external/node_modules/swarmutil/lib/SwarmUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="0" selection-start="1896" selection-end="1896" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ClientTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="44" selection-start="764" selection-end="764" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/waves/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ClientAdaptor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="159" selection-end="159" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../external/node_modules/redis/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="23" selection-start="2862" selection-end="2862" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="0" selection-start="1227" selection-end="1367" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/waves/LaunchingTest.js">
@@ -491,51 +548,35 @@
         <state line="22" column="19" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../external/node_modules/redis/index.js">
+    <entry file="file://$PROJECT_DIR$/waves/BenchMark.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="23" selection-start="2862" selection-end="2862" vertical-scroll-proportion="0.0">
+        <state line="7" column="14" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/waves/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="40" selection-start="1421" selection-end="1433" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ClientAdaptor.js">
+    <entry file="file://$PROJECT_DIR$/src/FollowerListService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="159" selection-end="159" vertical-scroll-proportion="0.0">
+        <state line="23" column="2" selection-start="484" selection-end="484" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Core.js">
+    <entry file="file://$PROJECT_DIR$/src/ChatPersistence.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="1227" selection-end="1367" vertical-scroll-proportion="0.0">
+        <state line="26" column="0" selection-start="790" selection-end="790" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/waves/login.js">
+    <entry file="file://$PROJECT_DIR$/etc/core">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../external/node_modules/swarmutil/lib/SwarmUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="1896" selection-end="1896" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ClientTest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="44" selection-start="764" selection-end="764" vertical-scroll-proportion="-13.4">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Adaptor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="28" selection-start="5244" selection-end="5244" vertical-scroll-proportion="0.66295266">
+        <state line="5" column="23" selection-start="143" selection-end="143" vertical-scroll-proportion="0.2254642">
           <folding />
         </state>
       </provider>

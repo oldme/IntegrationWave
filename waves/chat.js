@@ -45,9 +45,9 @@ var addChatMsgSwarming =
         }
     },
     notifyAll:{   //phase
-        node:"NotificationService",
+        node:"FollowerListService",
         code : function (){
-            var followers = this.getFollowers(this.roomId);
+            var followers = getFollowers(this.roomId);
             for (var i in followers){
                 this.currentTargetUser = i;
                 if(i != this.userId){
