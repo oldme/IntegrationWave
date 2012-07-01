@@ -2,29 +2,49 @@
 var addChatMsgSwarming =
 {
     vars:{
-        userId:false,
+        /*userId:false,
         date:null,
         message:null,
         roomId:null,
+        */
         debug:"swarm1",
         action:null
     },
-    start:function(roomId,userId,date,message,userFriendlyRoomName){
+    functions:{
+        getPageCallback:function(pageArray){
+            this.pageArray = pageArray;
+            this.swarm("pageAnswer",this.requester);
+        }
+    },
+    start_Save:function(roomId,userId,date,message,userFriendlyRoomName){
+        this.userFriendlyRoomName = userFriendlyRoomName;
         this.roomId     = roomId;
         this.userId     = userId;
         this.date       = date;
         this.message    = message;
-        this.userFriendlyRoomName = userFriendlyRoomName;
         this.swarm("recordMsg");
+    },
+    start_getPage:function(requester, roomId, pageNumber, pageSize){
+        this.roomId     = roomId;
+        this.pageNumber = pageNumber;
+        this.pageSize   = pageSize;
+        this.requester  = requester;
+        this.swarm("getPage");
     },
     recordMsg:{
         node:"ChatPersistence",
         code : function (){
             this.saveChat(this.roomId,this.userId,this.date,this.message);
-            this.swarm("notify");
+            this.swarm("notifyAll");
         }
     },
-    notify:{   //phase
+    getPage:{
+        node:"ChatPersistence",
+        code : function (){
+            this.getPage(this.roomId,this.pageNumber,this.pageSize,this.getPageCallback);
+        }
+    },
+    notifyAll:{   //phase
         node:"NotificationService",
         code : function (){
             var followers = this.getFollowers(this.roomId);
@@ -41,21 +61,25 @@ var addChatMsgSwarming =
         code : function (){
             var clientNodeName = this.findConnectedClientByUserId(this.currentTargetUser);
             if(clientNodeName){
-                this.swarm("home",clientNodeName);
+                this.swarm("notifyChatMessage",clientNodeName);
             }
-            else {
+            /*else {
                 this.swarm("mailNotification");
-            }
+            }*/
         }
     },
-    home:{   //phase executed on connected clients that are following a room and should get notified about a new chat message
+    notifyChatMessage:{ //notify different clients about a new chat message
+        node:"$client",
+        code : null
+    },
+    pageAnswer:{        //return a page on a client
         node:"$client",
         code : null
     },
     mailNotification:{   //phase executed on connected clients that are following a room and should get notified about a new chat message
         node:"mailNotificator",
         code : function (){
-            this.scheduleNotification("1d",this.roomId,"New chat message for " + this.userFriendlyRoomName);
+            //this.scheduleNotification("1d",this.roomId,"New chat message for " + this.userFriendlyRoomName);
         }
     }
 };
